@@ -340,16 +340,6 @@ function filterByCategory() {
     searchItems(); // Reutiliza a lógica de pesquisa
 }
 
-<<<<<<< HEAD
-// Obter nome da categoria
-function getCategoryName(category) {
-    const categories = {
-        'pasteis': 'Pastéis',
-        'combos': 'Combos',
-        'bebidas': 'Bebidas',
-        'sobremesas': 'Sobremesas',
-        'destaques': 'Destaques'
-=======
 // Obter nome da categoria com ícones
 function getCategoryName(category) {
     const categories = {
@@ -361,7 +351,6 @@ function getCategoryName(category) {
         'sobremesas': '🍰 Sobremesas',
         'combos': '🎁 Combos Especiais',
         'destaques': '⭐ Destaques da Casa'
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
     };
     return categories[category] || category;
 }
@@ -2061,16 +2050,6 @@ function renderGridView(items) {
     items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'menu-item-card';
-<<<<<<< HEAD
-        card.innerHTML = `
-            <button class="delete-btn" onclick="deleteMenuItem(${item.id})" title="Excluir item">
-                <i class="fas fa-trash"></i>
-            </button>
-            <h3>${item.name}</h3>
-            <div class="price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
-            <div class="description">${item.description || ''}</div>
-            <div class="category-badge">${getCategoryName(item.category)}</div>
-=======
         const imgUrl = item.image || item.image_url || (window.getDefaultCategoryIcon ? window.getDefaultCategoryIcon(item.category) : '');
         const itemPrice = typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
         
@@ -2084,7 +2063,6 @@ function renderGridView(items) {
             <div class="price" style="font-weight: 700; color: #e65100; font-size: 1.1rem; margin-bottom: 0.4rem;">R$ ${itemPrice.toFixed(2).replace('.', ',')}</div>
             <div class="description" style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.6rem; line-height: 1.3;">${item.description || ''}</div>
             <div class="category-badge" style="display: inline-block; background: #fff3e0; color: #e65100; font-weight: 600; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; margin-bottom: 0.8rem;">${getCategoryName(item.category)}</div>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             <div class="btn-group">
                 <button class="btn btn-warning btn-sm" onclick="editMenuItem(${item.id})">
                     <i class="fas fa-edit"></i> Editar
@@ -2180,9 +2158,6 @@ async function saveMenuItems() {
     notifySiteUpdate();
 }
 
-<<<<<<< HEAD
-// Adicionar novo item
-=======
 // Atalho para selecionar imagens de exemplo por categoria
 function setPresetImage(cat) {
     const presetImages = {
@@ -2232,16 +2207,12 @@ function updateFormPreview() {
 }
 
 // Adicionar novo item (localStorage / Supabase)
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
 async function addMenuItem() {
     const name = document.getElementById('new-item-name').value.trim();
     const price = document.getElementById('new-item-price').value.trim();
     const category = document.getElementById('new-item-category').value;
     const description = document.getElementById('new-item-description').value.trim();
-<<<<<<< HEAD
-=======
     const imageInput = document.getElementById('new-item-image')?.value.trim();
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
     
     if (!name || !price) {
         showNotification('Preencha nome e preço!', 'error');
@@ -2255,46 +2226,28 @@ async function addMenuItem() {
         showNotification('Preço inválido!', 'error');
         return;
     }
-<<<<<<< HEAD
-=======
 
     const image = imageInput || (window.getDefaultCategoryIcon ? window.getDefaultCategoryIcon(category) : '');
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
     
     try {
         let newItem;
         
         if (useSupabase) {
-<<<<<<< HEAD
-            // Salvar no Supabase
-=======
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             newItem = await supabaseService.addMenuItem({
                 name,
                 price: priceNum,
                 category,
-<<<<<<< HEAD
-                description: description || ''
-            });
-        } else {
-            // Salvar no localStorage
-=======
                 description: description || '',
                 image
             });
         } else {
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             newItem = {
                 id: Date.now(),
                 name,
                 price: priceNum,
                 category,
-<<<<<<< HEAD
-                description: description || ''
-=======
                 description: description || '',
                 image
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             };
             menuItems.push(newItem);
             localStorage.setItem('menuItems', JSON.stringify(menuItems));
@@ -2304,19 +2257,6 @@ async function addMenuItem() {
         document.getElementById('new-item-name').value = '';
         document.getElementById('new-item-price').value = '';
         document.getElementById('new-item-description').value = '';
-<<<<<<< HEAD
-        
-        // Fechar formulário após adicionar
-        toggleAddForm();
-        
-        // Aplicar filtros atuais
-        searchItems();
-        
-        // Notificar site principal
-        notifySiteUpdate();
-        
-        showNotification('Item adicionado com sucesso!', 'success');
-=======
         if (document.getElementById('new-item-image')) document.getElementById('new-item-image').value = '';
         
         // Renderizar e notificar
@@ -2324,7 +2264,11 @@ async function addMenuItem() {
         notifySiteUpdate();
         
         showNotification(`"${name}" cadastrado com sucesso na memória local!`, 'success');
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
+    } catch (error) {
+        console.error('Erro ao adicionar item:', error);
+        showNotification('Erro ao adicionar item!', 'error');
+    }
+}
     } catch (error) {
         console.error('Erro ao adicionar item:', error);
         showNotification('Erro ao adicionar item!', 'error');
@@ -2487,11 +2431,7 @@ function loadWhatsApp() {
     if (savedWhatsApp) {
         document.getElementById('whatsapp-number').value = savedWhatsApp;
     } else {
-<<<<<<< HEAD
-        document.getElementById('whatsapp-number').value = '5519992450000';
-=======
         document.getElementById('whatsapp-number').value = '5511999998888';
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
     }
 }
 

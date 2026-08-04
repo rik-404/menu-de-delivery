@@ -36,27 +36,6 @@
 }
 /* Estilos gerais */
 :root {
-<<<<<<< HEAD
-    --primary-color: #1D598E;       /* Azul principal */
-    --primary-dark: #194772;        /* Azul escuro */
-    --primary-darker: #060913;      /* Azul quase preto */
-    --secondary-color: #CDAF6A;     /* Dourado */
-    --accent-color: #5E5342;        /* Marrom */
-    --text-color: #333333;          /* Cor do texto principal */
-    --text-light: #666666;          /* Texto mais claro */
-    --light-gray: #f8f9fa;          /* Fundo claro */
-    --border-color: #e0e0e0;        /* Cor das bordas */
-    --white: #ffffff;               /* Branco */
-    --black: #000000;               /* Preto */
-    --success: #28a745;             /* Verde - sucesso */
-    --warning: #ffc107;             /* Amarelo - aviso */
-    --danger: #dc3545;              /* Vermelho - erro */
-    --muted: #768DA0;               /* Azul acinzentado */
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-=======
     --primary-color: #FF5722;       /* Laranja Gourmet Vibrante */
     --primary-dark: #E65100;        /* Laranja Escuro */
     --primary-darker: #1E2229;      /* Slate Escuro Elegant */
@@ -136,8 +115,6 @@
 .menu-item:hover .item-img {
     transform: scale(1.07);
 }
-
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
 * {
     margin: 0;
     padding: 0;

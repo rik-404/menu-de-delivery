@@ -110,12 +110,6 @@ function updateWhatsAppNumber(number) {
     }
 }
 
-<<<<<<< HEAD
-// Carregar itens do menu da administração
-async function loadMenuItemsFromAdmin() {
-    try {
-        // Tentar carregar do Supabase primeiro
-=======
 // Dados padrão do cardápio demonstrativo (localStorage)
 const DEFAULT_MENU_ITEMS = [
     {
@@ -235,7 +229,6 @@ const DEFAULT_MENU_ITEMS = [
 // Carregar itens do menu da administração ou localStorage
 async function loadMenuItemsFromAdmin() {
     try {
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
         if (window.supabaseService && window.supabaseService.initialized) {
             console.log('Carregando itens do Supabase...');
             const items = await supabaseService.getMenuItems();
@@ -246,28 +239,11 @@ async function loadMenuItemsFromAdmin() {
             }
         }
         
-<<<<<<< HEAD
         // Fallback para localStorage
-=======
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
         console.log('Carregando itens do localStorage...');
         const adminMenuItems = localStorage.getItem('menuItems');
         if (adminMenuItems) {
             const items = JSON.parse(adminMenuItems);
-<<<<<<< HEAD
-            console.log('Itens carregados do localStorage:', items.length);
-            updateMenuItemsFromAdmin(items);
-        } else {
-            console.log('Nenhum item encontrado');
-        }
-    } catch (error) {
-        console.error('Erro ao carregar itens do menu:', error);
-        // Fallback para localStorage
-        const adminMenuItems = localStorage.getItem('menuItems');
-        if (adminMenuItems) {
-            const items = JSON.parse(adminMenuItems);
-            updateMenuItemsFromAdmin(items);
-=======
             if (items && items.length > 0) {
                 console.log('Itens carregados do localStorage:', items.length);
                 updateMenuItemsFromAdmin(items);
@@ -281,221 +257,9 @@ async function loadMenuItemsFromAdmin() {
         updateMenuItemsFromAdmin(DEFAULT_MENU_ITEMS);
 
     } catch (error) {
-        console.error('Erro ao carregar itens do menu:', error);
-        const adminMenuItems = localStorage.getItem('menuItems');
-        if (adminMenuItems) {
-            updateMenuItemsFromAdmin(JSON.parse(adminMenuItems));
-        } else {
-            updateMenuItemsFromAdmin(DEFAULT_MENU_ITEMS);
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
+            }
         }
-    }
-}
 
-<<<<<<< HEAD
-// Atualizar itens do menu no site principal
-function updateMenuItemsFromAdmin(items) {
-    console.log('Atualizando itens do menu:', items);
-    
-    // Limpar containers primeiro para remover itens estáticos
-    const containers = [
-        { selector: '#pasteis .items-grid', category: 'pasteis' },
-        { selector: '#combos .combo-grid', category: 'combos' },
-        { selector: '#bebidas .items-grid', category: 'bebidas' },
-        { selector: '#sobremesas .items-grid', category: 'sobremesas' },
-        { selector: '#destaques .highlights-grid', category: 'destaques' }
-    ];
-    
-    // Limpar todos os containers
-    containers.forEach(({ selector, category }) => {
-        const container = document.querySelector(selector);
-        if (container) {
-            container.innerHTML = '';
-        }
-    });
-    
-    // Limpar categorias estáticas também
-    const categories = document.querySelectorAll('#pasteis .category, #bebidas .category');
-    categories.forEach(category => {
-        // Manter apenas o h3, remover o conteúdo
-        const h3 = category.querySelector('h3');
-        category.innerHTML = '';
-        if (h3) {
-            category.appendChild(h3);
-        }
-    });
-    
-    // Limpar especificamente categorias estáticas de pastéis
-    const pasteisCategories = document.querySelectorAll('#pasteis .category');
-    pasteisCategories.forEach(category => {
-        const h3 = category.querySelector('h3');
-        if (h3 && h3.textContent.includes('CATUPIRY')) {
-            // Remover completamente a categoria Catupiry
-            category.remove();
-        } else {
-            // Limpar outras categorias mantendo apenas o h3
-            const grid = category.querySelector('.items-grid');
-            if (grid) {
-                grid.innerHTML = '';
-            }
-        }
-    });
-    
-    // Atualizar pastéis
-    const pasteisItems = items.filter(item => item.category === 'pasteis');
-    let pasteisContainer = document.querySelector('#pasteis .items-grid');
-    
-    // Se não encontrar, criar um novo container
-    if (!pasteisContainer) {
-        const pasteisSection = document.querySelector('#pasteis');
-        if (pasteisSection) {
-            // Criar categoria se não existir
-            let category = pasteisSection.querySelector('.category');
-            if (!category) {
-                category = document.createElement('div');
-                category.className = 'category';
-                category.innerHTML = '<h3>PASTÉIS</h3>';
-                pasteisSection.appendChild(category);
-            }
-            
-            // Criar grid se não existir
-            pasteisContainer = document.createElement('div');
-            pasteisContainer.className = 'items-grid';
-            category.appendChild(pasteisContainer);
-        }
-    }
-    
-    if (pasteisContainer) {
-        if (pasteisItems.length === 0) {
-            pasteisContainer.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        } else {
-            pasteisItems.forEach(item => {
-                pasteisContainer.innerHTML += `
-                    <div class="menu-item" data-name="${item.name}" data-price="${item.price}">
-                        <div class="item-info">
-                            <h3>${item.name}</h3>
-                            <p class="item-description">${item.description || ''}</p>
-                            <p class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
-                        </div>
-                        <div class="item-quantity">
-                            <button class="minus">-</button>
-                            <span class="quantity">0</span>
-                            <button class="plus">+</button>
-                        </div>
-                        <button class="btn-add">Adicionar</button>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    // Atualizar combos
-    const combosItems = items.filter(item => item.category === 'combos');
-    const combosContainer = document.querySelector('#combos .combo-grid');
-    if (combosContainer) {
-        if (combosItems.length === 0) {
-            combosContainer.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        } else {
-            combosItems.forEach(item => {
-                combosContainer.innerHTML += `
-                    <div class="combo-item" data-name="${item.name}" data-price="${item.price}">
-                        <div class="combo-info">
-                            <h3>${item.name}</h3>
-                            <p class="combo-description">${item.description || ''}</p>
-                            <p class="combo-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
-                        </div>
-                        <div class="item-quantity">
-                            <button class="minus">-</button>
-                            <span class="quantity">0</span>
-                            <button class="plus">+</button>
-                        </div>
-                        <button class="btn-add">Adicionar</button>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    // Atualizar bebidas
-    const bebidasItems = items.filter(item => item.category === 'bebidas');
-    const bebidasContainer = document.querySelector('#bebidas .items-grid');
-    if (bebidasContainer) {
-        if (bebidasItems.length === 0) {
-            bebidasContainer.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        } else {
-            bebidasItems.forEach(item => {
-                bebidasContainer.innerHTML += `
-                    <div class="menu-item" data-name="${item.name}" data-price="${item.price}">
-                        <div class="item-info">
-                            <h3>${item.name}</h3>
-                            <p class="item-description">${item.description || ''}</p>
-                            <p class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
-                        </div>
-                        <div class="item-quantity">
-                            <button class="minus">-</button>
-                            <span class="quantity">0</span>
-                            <button class="plus">+</button>
-                        </div>
-                        <button class="btn-add">Adicionar</button>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    // Atualizar sobremesas
-    const sobremesasItems = items.filter(item => item.category === 'sobremesas');
-    const sobremesasContainer = document.querySelector('#sobremesas .items-grid');
-    if (sobremesasContainer) {
-        if (sobremesasItems.length === 0) {
-            sobremesasContainer.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        } else {
-            sobremesasItems.forEach(item => {
-                sobremesasContainer.innerHTML += `
-                    <div class="menu-item" data-name="${item.name}" data-price="${item.price}">
-                        <div class="item-info">
-                            <h3>${item.name}</h3>
-                            <p class="item-description">${item.description || ''}</p>
-                            <p class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
-                        </div>
-                        <div class="item-quantity">
-                            <button class="minus">-</button>
-                            <span class="quantity">0</span>
-                            <button class="plus">+</button>
-                        </div>
-                        <button class="btn-add">Adicionar</button>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    // Atualizar destaques
-    const destaquesItems = items.filter(item => item.category === 'destaques');
-    const destaquesContainer = document.querySelector('#destaques .highlights-grid');
-    if (destaquesContainer) {
-        if (destaquesItems.length === 0) {
-            destaquesContainer.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        } else {
-            destaquesItems.forEach(item => {
-                destaquesContainer.innerHTML += `
-                    <div class="highlight-item" data-name="${item.name}" data-price="${item.price}">
-                        <h3>${item.name}</h3>
-                        <p class="highlight-description">${item.description || ''}</p>
-                        <p class="highlight-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
-                        <button class="btn-add-to-cart">Adicionar ao Carrinho</button>
-                    </div>
-                `;
-            });
-        }
-    }
-    
-    // Recarregar event listeners
-    setupEventListeners();
-    
-    // Mostrar notificação de atualização (opcional)
-    showUpdateNotification('Cardápio atualizado com sucesso!');
-=======
 // Imagens padrão por categoria
 function getDefaultCategoryIcon(category) {
     const icons = {
@@ -1134,11 +898,7 @@ async function checkout() {
     
     // Número de telefone da loja (carregar do localStorage ou usar padrão)
     const savedWhatsApp = localStorage.getItem('whatsappNumber');
-<<<<<<< HEAD
-    const phoneNumber = savedWhatsApp || '5519992450000';
-=======
     const phoneNumber = savedWhatsApp || '5511999998888';
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
     
     // Construir mensagem
     let message = 'Olá! Gostaria de fazer um pedido:\n\n';

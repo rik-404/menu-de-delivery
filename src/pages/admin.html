@@ -25,13 +25,8 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-<<<<<<< HEAD
-                <img src="../../assets/images/logo_v1659390701.jpeg" alt="Pastelaria" class="sidebar-logo">
-                <h2>Pastelaria</h2>
-=======
                 <img src="../../assets/images/logo_ficticia.png" alt="Sabor Express" class="sidebar-logo">
                 <h2>Sabor Express</h2>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             </div>
             
             <nav class="sidebar-nav">
@@ -83,11 +78,7 @@
                 </div>
                 <div class="top-bar-right">
                     <div class="user-info">
-<<<<<<< HEAD
-                        <img src="img/logo_v1659390701.jpeg" alt="Logo" class="user-avatar">
-=======
                         <img src="../../assets/images/logo_ficticia.png" alt="Sabor Express" class="user-avatar">
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                         <span class="user-name">Administrador</span>
                         <button class="btn-logout-top" onclick="logout()" title="Sair">
                             <i class="fas fa-sign-out-alt"></i>
@@ -216,11 +207,6 @@
                 
                 <!-- Menu Section -->
                 <section id="menu" class="content-section">
-<<<<<<< HEAD
-                    <div class="section-header">
-                        <h2><i class="fas fa-utensils"></i> Gerenciar Cardápio</h2>
-                        <p>Adicione, edite ou remova itens do seu cardápio</p>
-=======
                     <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                         <div>
                             <h2><i class="fas fa-utensils"></i> Gerenciar Cardápio de Alimentos</h2>
@@ -239,8 +225,6 @@
                                 <p style="margin: 0; font-size: 0.9rem; color: #cbd5e1;">Todos os alimentos cadastrados aqui são gravados instantaneamente no seu navegador (<code>localStorage</code>) e refletem no <a href="index.html" target="_blank" style="color: #64b5f6; text-decoration: underline;">Site do Cardápio</a> em tempo real!</p>
                             </div>
                             <span class="badge" style="background: #2e7d32; color: #fff; padding: 0.4rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem;"><i class="fas fa-check-circle"></i> Memória Local Pronta</span>
-                        </div>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                     </div>
                     
                     <!-- Barra de Pesquisa e Filtros -->
@@ -248,23 +232,12 @@
                         <div class="search-bar">
                             <div class="search-input-wrapper">
                                 <i class="fas fa-search"></i>
-<<<<<<< HEAD
-                                <input type="text" id="searchInput" placeholder="Pesquisar itens..." onkeyup="searchItems()">
-=======
                                 <input type="text" id="searchInput" placeholder="Pesquisar alimentos por nome ou descrição..." onkeyup="searchItems()">
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                             </div>
                         </div>
                         <div class="filter-controls">
                             <select id="categoryFilter" onchange="filterByCategory()">
                                 <option value="">Todas as Categorias</option>
-<<<<<<< HEAD
-                                <option value="pasteis">Pastéis</option>
-                                <option value="combos">Combos</option>
-                                <option value="bebidas">Bebidas</option>
-                                <option value="sobremesas">Sobremesas</option>
-                                <option value="destaques">Destaques</option>
-=======
                                 <option value="burgers">🍔 Burgers & Lanches</option>
                                 <option value="pasteis">🥟 Pastéis Gourmet</option>
                                 <option value="pizzas">🍕 Pizzas & Calzones</option>
@@ -273,7 +246,6 @@
                                 <option value="sobremesas">🍰 Sobremesas</option>
                                 <option value="combos">🎁 Combos Especiais</option>
                                 <option value="destaques">⭐ Destaques da Casa</option>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                             </select>
                         </div>
                         <div class="view-toggle">
@@ -285,41 +257,6 @@
                     </div>
                     
                     <!-- Formulário para adicionar novo item -->
-<<<<<<< HEAD
-                    <div class="add-item-form" id="addItemForm">
-                        <div class="form-header" onclick="toggleAddForm()">
-                            <h3><i class="fas fa-plus"></i> Adicionar Novo Item</h3>
-                            <i class="fas fa-chevron-down" id="addFormToggle"></i>
-                        </div>
-                        <div class="form-content" id="addFormContent">
-                            <div class="form-group">
-                                <label for="new-item-name">Nome do Item:</label>
-                                <input type="text" id="new-item-name" placeholder="Ex: Pastel de Carne">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="new-item-price">Preço:</label>
-                                    <input type="text" id="new-item-price" placeholder="R$ 12,90">
-                                </div>
-                                <div class="form-group">
-                                    <label for="new-item-category">Categoria:</label>
-                                    <select id="new-item-category">
-                                        <option value="pasteis">Pastéis</option>
-                                        <option value="combos">Combos</option>
-                                        <option value="bebidas">Bebidas</option>
-                                        <option value="sobremesas">Sobremesas</option>
-                                        <option value="destaques">Destaques</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="new-item-description">Descrição:</label>
-                                <textarea id="new-item-description" placeholder="Descreva o item..." rows="3"></textarea>
-                            </div>
-                            <button class="btn btn-success" onclick="addMenuItem()">
-                                <i class="fas fa-plus"></i> Adicionar Item
-                            </button>
-=======
                     <div class="add-item-form expanded" id="addItemForm">
                         <div class="form-header" onclick="toggleAddForm()">
                             <h3><i class="fas fa-plus-circle"></i> Cadastrar Novo Alimento (Teste em Tempo Real)</h3>
@@ -380,7 +317,6 @@
                                     <i class="fas fa-check"></i> Cadastrar Alimento em localStorage
                                 </button>
                             </div>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                         </div>
                     </div>
                     
@@ -405,11 +341,7 @@
                     <div class="form-card">
                         <div class="form-group">
                             <label for="site-title">Título do Site:</label>
-<<<<<<< HEAD
-                            <input type="text" id="site-title" placeholder="Pastelaria Itoman">
-=======
                             <input type="text" id="site-title" placeholder="Sabor Express Delivery">
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                         </div>
                         <div class="form-group">
                             <label for="delivery-fee">Taxa de Entrega:</label>
@@ -417,13 +349,8 @@
                         </div>
                         <div class="form-group">
                             <label for="whatsapp-number">Número do WhatsApp:</label>
-<<<<<<< HEAD
-                            <input type="tel" id="whatsapp-number" placeholder="5519992450000">
-                            <small>Formato: DDD + número (ex: 5519992450000)</small>
-=======
                             <input type="tel" id="whatsapp-number" placeholder="5511999998888">
                             <small>Formato: DDD + número (ex: 5511999998888)</small>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                         </div>
                         <button class="btn btn-primary" onclick="saveSettings()">
                             <i class="fas fa-save"></i> Salvar Configurações

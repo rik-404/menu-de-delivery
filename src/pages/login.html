@@ -3,28 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Login - Administração</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../src/styles/pages/login.css">
-=======
     <title>Login - Sabor Express Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../src/styles/pages/login.css">
     <link rel="icon" href="../../assets/images/logo_ficticia.png">
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
 </head>
 <body>
     <div class="login-container">
         <header class="login-header">
-<<<<<<< HEAD
-            <h1><i class="fas fa-lock"></i> Acesso Restrito</h1>
-            <p>Pastelaria</p>
-=======
             <img src="../../assets/images/logo_ficticia.png" alt="Sabor Express" style="width: 80px; height: 80px; margin-bottom: 0.5rem;">
             <h1><i class="fas fa-lock"></i> Painel de Controle</h1>
             <p>Sabor Express Delivery</p>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
         </header>
         
         <form class="login-form" id="loginForm">
@@ -36,11 +25,7 @@
                 <label for="username">Usuário:</label>
                 <div class="input-icon">
                     <i class="fas fa-user"></i>
-<<<<<<< HEAD
-                    <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
-=======
                     <input type="text" id="username" name="username" placeholder="Usuário (ex: admin)" value="admin" required>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                 </div>
             </div>
             
@@ -48,24 +33,11 @@
                 <label for="password">Senha:</label>
                 <div class="input-icon">
                     <i class="fas fa-key"></i>
-<<<<<<< HEAD
-                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
-=======
                     <input type="password" id="password" name="password" placeholder="Senha (ex: admin123)" value="admin123" required>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                 </div>
             </div>
             
             <button type="submit" class="btn-login" id="loginBtn">
-<<<<<<< HEAD
-                <span class="btn-text"><i class="fas fa-sign-in-alt"></i> Entrar</span>
-                <div class="loading"></div>
-            </button>
-        </form>
-        
-        <footer class="login-footer">
-            <p>&copy; 2026 Vendramini Informática</p>
-=======
                 <span class="btn-text"><i class="fas fa-sign-in-alt"></i> Entrar no Painel</span>
                 <div class="loading"></div>
             </button>
@@ -77,20 +49,10 @@
         
         <footer class="login-footer">
             <p>&copy; 2026 Sabor Express Delivery</p>
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
         </footer>
     </div>
 
     <script>
-<<<<<<< HEAD
-        // Credenciais padrão (em produção, use sistema mais seguro)
-        const DEFAULT_CREDENTIALS = {
-            username: 'admin',
-            password: 'pastelaria123'
-        };
-
-=======
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
         // Verificar se já está autenticado
         function checkAuth() {
             const isAuthenticated = sessionStorage.getItem('adminAuthenticated');
@@ -110,44 +72,13 @@
             const errorMessage = document.getElementById('errorMessage');
             const loginBtn = document.getElementById('loginBtn');
             
-<<<<<<< HEAD
-            // Resetar mensagem de erro
             errorMessage.classList.remove('show');
             
-            // Validar campos
-=======
-            errorMessage.classList.remove('show');
-            
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
             if (!username || !password) {
                 showError('Preencha todos os campos!');
                 return;
             }
             
-<<<<<<< HEAD
-            // Mostrar loading
-            loginBtn.classList.add('loading');
-            loginBtn.disabled = true;
-            
-            // Simular delay para melhor UX
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // Verificar credenciais
-            if (username === DEFAULT_CREDENTIALS.username && password === DEFAULT_CREDENTIALS.password) {
-                // Autenticado com sucesso
-                sessionStorage.setItem('adminAuthenticated', 'true');
-                sessionStorage.setItem('adminLoginTime', new Date().toISOString());
-                
-                // Redirecionar para admin
-                window.location.href = '../../admin.html';
-            } else {
-                // Credenciais incorretas
-                showError('Usuário ou senha incorretos!');
-                loginBtn.classList.remove('loading');
-                loginBtn.disabled = false;
-                
-                // Limpar campos
-=======
             loginBtn.classList.add('loading');
             loginBtn.disabled = true;
             
@@ -162,7 +93,6 @@
                 showError('Usuário ou senha incorretos!');
                 loginBtn.classList.remove('loading');
                 loginBtn.disabled = false;
->>>>>>> 7617e73 (feat: implement admin dashboard UI, Supabase integration, and documentation structure)
                 document.getElementById('password').value = '';
                 document.getElementById('password').focus();
             }
