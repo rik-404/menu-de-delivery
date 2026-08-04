@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sabor Express Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../src/styles/pages/login.css">
+    <link rel="stylesheet" href="../styles/pages/login.css">
     <link rel="icon" href="../../assets/images/logo_ficticia.png">
 </head>
 <body>
@@ -57,7 +57,7 @@
         function checkAuth() {
             const isAuthenticated = sessionStorage.getItem('adminAuthenticated');
             if (isAuthenticated === 'true') {
-                window.location.href = '../../admin.html';
+                window.location.href = 'admin.html';
                 return true;
             }
             return false;
@@ -88,7 +88,7 @@
             if (username === 'admin' && (password === 'admin123' || password === 'pastelaria123' || password === 'admin' || password === '123456')) {
                 sessionStorage.setItem('adminAuthenticated', 'true');
                 sessionStorage.setItem('adminLoginTime', new Date().toISOString());
-                window.location.href = '../../admin.html';
+                window.location.href = 'admin.html';
             } else {
                 showError('Usuário ou senha incorretos!');
                 loginBtn.classList.remove('loading');
@@ -115,7 +115,7 @@
 
         // Impedir acesso direto via URL se não estiver autenticado
         if (window.location.pathname.includes('admin.html') && sessionStorage.getItem('adminAuthenticated') !== 'true') {
-            window.location.href = '../../login.html';
+            window.location.href = 'login.html';
         }
     </script>
 </body>

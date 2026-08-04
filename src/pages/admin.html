@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administração - Pastelaria</title>
-    <link rel="stylesheet" href="../../src/styles/pages/admin.css">
-    <link rel="stylesheet" href="../../src/styles/components/orders-table.css">
-    <link rel="stylesheet" href="../../src/styles/components/order-details-modal.css">
-    <link rel="stylesheet" href="../../src/styles/components/confirmation-modal.css">
-    <link rel="stylesheet" href="../../src/styles/components/pending-notifications.css">
+    <link rel="stylesheet" href="../styles/pages/admin.css">
+    <link rel="stylesheet" href="../styles/components/orders-table.css">
+    <link rel="stylesheet" href="../styles/components/order-details-modal.css">
+    <link rel="stylesheet" href="../styles/components/confirmation-modal.css">
+    <link rel="stylesheet" href="../styles/components/pending-notifications.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../../src/styles/pages/admin.css">
 </head>
 <body>
     <script>
         // Verificar autenticação imediatamente
         if (sessionStorage.getItem('adminAuthenticated') !== 'true') {
-            window.location.href = '../../login.html';
+            window.location.href = 'login.html';
         }
     </script>
     
@@ -659,8 +658,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../../src/scripts/services/supabase-config.js"></script>
-    <script src="../../src/scripts/services/supabase-service.js"></script>
-    <script src="../../src/scripts/components/admin.js"></script>
+    <script src="../scripts/services/supabase-config.js"></script>
+    <script src="../scripts/services/supabase-service.js"></script>
+    <script src="../scripts/components/admin.js"></script>
 </body>
 </html>
